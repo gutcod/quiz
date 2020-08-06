@@ -1,8 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import "./ActiveQuiz.css";
+import AnswerList from "./AnswerList/AnswerList";
 
-export default class ActiveQuiz extends Component {
-  render() {
-    return <div></div>;
-  }
-}
+const ActiveQuiz = (props) => (
+  <div className="ActivQuiz">
+    <p className="Questions">
+      <span>
+        <strong>1.</strong>&nbsp; How are you?
+      </span>
+      <small> 4/12</small>
+    </p>
+    <AnswerList answers={props.answers} />
+  </div>
+);
+
+export default ActiveQuiz;
