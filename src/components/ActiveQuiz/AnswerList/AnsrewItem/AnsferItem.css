@@ -11,7 +11,7 @@
     transition: background .3s ea;
 }
 
-.AnswerItem.succes {
+.AnswerItem.success {
     background: rgba(161, 240, 69, .7);
 }
 

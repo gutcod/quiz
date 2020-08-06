@@ -1,24 +1,41 @@
 import React from "react";
 import "./FinishedQuiz.css";
+import Button from "../UI/Button/Button";
 
 const FinishedQuiz = (props) => {
+  const successCount = Object.keys(props.results).reduce((total, key) => {
+    if (props.results[key] === "success") {
+      total++;
+    }
+    return total;
+  }, 0);
   return (
     <div className="FinishedQuiz">
       <ul>
-        <li>
-          <strong>1. </strong>
-          blabla
-          <i className={"fa fa-times error"} />
-        </li>
-        <li>
-          <strong>2. </strong>
-          blabla
-          <i className={"fa fa-check succes"} />
-        </li>
+        {props.quiz.map((quizItem, index) => {
+          const cls = [
+            "fa",
+            props.results[quizItem.id] === "error"
+              ? "fa-times error"
+              : "fa-check success",
+          ];
+          return (
+            <li key={index}>
+              <strong>{index + 1}.</strong>&nbsp;
+              {quizItem.question}
+              <i className={cls.join(" ")} />
+            </li>
+          );
+        })}
       </ul>
-      <p>Your score:</p>
+      <p>
+        Your score is: {successCount} / {props.quiz.length}
+      </p>
       <div>
-        <button>Repeat</button>
+        <Button onClick={props.onRetry} type="primary">
+          Repeat
+        </Button>
+        <Button type="succes">Find Test</Button>
       </div>
     </div>
   );
