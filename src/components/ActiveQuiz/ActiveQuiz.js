@@ -6,11 +6,11 @@ const ActiveQuiz = (props) => (
   <div className="ActivQuiz">
     <p className="Questions">
       <span>
-        <strong>1.</strong>&nbsp; How are you?
+        <strong>1.</strong>&nbsp; {props.question}
       </span>
       <small> 4/12</small>
     </p>
-    <AnswerList answers={props.answers} />
+    <AnswerList answers={props.answers} onAnswerClick={props.onAnswerClick} />
   </div>
 );
 
