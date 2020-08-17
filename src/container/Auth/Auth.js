@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./Auth.css";
 import Button from "../../components/UI/Button/Button";
-import { Input } from "../../components/UI/Input/input";
+import Input from "../../components/UI/Input/input";
 import is from "is_js";
 
 export default class Auth extends Component {
   state = {
+    isFormValid: false,
     formControls: {
       email: {
         value: "",
@@ -74,7 +75,12 @@ export default class Auth extends Component {
     control.touched = true;
     control.valid = this.validateControl(control.value, control.validation);
     formControls[controlName] = control;
-    this.setState({ formControls });
+
+    let isFormValid = true;
+    Object.keys(formControls).forEach((name) => {
+      isFormValid = formControls[name].valid && isFormValid;
+    });
+    this.setState({ formControls, isFormValid });
   };
   loginHandler = () => {};
   registerHandler = () => {};
@@ -88,10 +94,18 @@ export default class Auth extends Component {
           <h1>Auth</h1>
           <form onSubmit={this.submitHandler} className="AuthForm">
             {this.renderInputs()}
-            <Button type="succes" onClick={this.loginHandler}>
+            <Button
+              type="succes"
+              onClick={this.loginHandler}
+              disabled={!this.state.isFormValid}
+            >
               Login
             </Button>
-            <Button type="primary" onClick={this.registerHandler}>
+            <Button
+              type="primary"
+              onClick={this.registerHandler}
+              disabled={!this.state.isFormValid}
+            >
               Register
             </Button>
           </form>

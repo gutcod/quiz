@@ -4,7 +4,7 @@ import "./input.css";
 function isInvalid({ valid, touched, shoudValidate }) {
   return !valid && shoudValidate && touched;
 }
-export const Input = (props) => {
+const Input = (props) => {
   const inputType = props.type || "text";
   const cls = ["Input"];
   const htmlFor = `${inputType}-${Math.random()}`;
@@ -26,3 +26,4 @@ export const Input = (props) => {
     </div>
   );
 };
+export default Input;
