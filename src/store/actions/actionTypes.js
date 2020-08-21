@@ -11,3 +11,7 @@ export const QUIZ_RETRY = "QUIZ_RETRY";
 //quiz creator
 export const CREATE_QUIZ_QUESTION = "CREATE_QUIZ_QUESTION";
 export const RESET_QUIZ_CREATION = "RESET_QUIZ_CREATION";
+
+// Auth page
+export const AUTH_SUCCES = "AUTH_SUCCES";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
